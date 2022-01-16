@@ -1,17 +1,25 @@
 package simple.spring.order;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import simple.spring.AppConfig;
 import simple.spring.member.Grade;
 import simple.spring.member.Member;
 import simple.spring.member.MemberService;
 import simple.spring.member.MemberServiceImpl;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class OrderServiceImplTest {
-    MemberService memberService = new MemberServiceImpl();
-    OrderService orderService = new OrderServiceImpl();
+    MemberService memberService;
+    OrderService orderService;
+
+    @BeforeEach
+    void beforeEach() {
+        AppConfig appConfig = new AppConfig();
+        memberService = appConfig.memberService();
+        orderService = appConfig.orderService();
+    }
+
 
     @Test
     void createOrder() {

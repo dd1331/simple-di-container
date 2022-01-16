@@ -6,12 +6,12 @@ import simple.spring.member.MemberService;
 import simple.spring.member.MemberServiceImpl;
 import simple.spring.order.Order;
 import simple.spring.order.OrderService;
-import simple.spring.order.OrderServiceImpl;
 
 public class OrderApp {
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl();
-        OrderService orderService = new OrderServiceImpl();
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService();
+        OrderService orderService = appConfig.orderService();
 
 
         Long memberId = 1L;
